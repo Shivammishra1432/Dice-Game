@@ -1,0 +1,30 @@
+body{
+    background-image: url(bg.jpg);
+/* background-size: contain; */
+background-repeat: no-repeat;
+background-size: 100%;
+}
+/* 
+#container{
+
+    display: flex;
+}
+
+
+ */
+
+/* 
+#moneyid{
+background-color
+
+
+} */
+
+.main-content{
+
+background-color: rgb(108, 179, 154);
+display: flex;
+font-size: 20px;
+
+
+}

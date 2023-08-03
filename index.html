@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Game by Shivam Mishra</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <h1>Bank Balance</h1>
+      <div id="moneyid"></div>
+      <button onclick=" finishgame()">Take your money</button>
+      <div id="container">
+        <div id="dice1" class="dices"></div>
+        <div id="dice2" class="dices"></div>
+      </div>
+      <button onclick="rollMyDice()">Dice</button>
+      <div id="totalDice"></div>
+    </div>
+  </body>
+  <script>
+    //  For Welcome and Guiding our Players about the game Rules and Instructions......
+
+    alert(
+      "Welcome, to Dice Game . You have Rs. 10,000 at the beginning. If your dices are equal to 12 at every dice, You get Rs. 1000. If not you lose Rs. 50 at every dice. Good Luck :)  "
+    );
+
+    let yourMoney = 10000;
+    document.getElementById("moneyid").innerHTML = "Rs." + yourMoney;
+
+    function rollMyDice() {
+      document.getElementById("totalDice").innerHTML = "";
+
+      const dice1 = Math.floor(Math.random() * 6) + 1;
+      const dice2 = Math.floor(Math.random() * 6) + 1;
+
+      document.getElementById("dice1").innerHTML = dice1;
+      document.getElementById("dice2").innerHTML = dice2;
+
+      const totalDiceNumbers = dice1 + dice2;
+
+      if (totalDiceNumbers == 12) {
+        setTimeout(youearned, 1000);
+
+        yourMoney = yourMoney + 1000;
+
+        document.getElementById("moneyid").innerHTML = "Rs." + yourMoney;
+      } else if (totalDiceNumbers < 12) {
+        setTimeout(youlost, 1000);
+
+        yourMoney = yourMoney - 50;
+
+        document.getElementById("moneyid").innerHTML = "Rs." + yourMoney;
+      }
+
+      if (yourMoney <= 0) {
+        alert("Sorry, you are out of Money ");
+
+        document.body.innerHTML = "";
+
+        document.body.style.backgroundColor = "red";
+
+        const newDiv = document.createElement("div");
+        const newButton = document.createElement("button");
+
+        document.body.appendChild(newDiv);
+        document.body.appendChild(newButton);
+
+        newDiv.innerHTML = "STOP GAMBLING!!!";
+
+        newDiv.classList.add("newDivclass");
+
+        newButton.innerHTML = "I want to play again";
+
+        newButton.addEventListener("click", function () {
+          window.location.reload();
+        });
+      }
+    }
+
+    function finishgame() {
+      document.body.innerHTML = "";
+
+      document.body.style.backgroundColor = "yellowgreen";
+
+      const newDiv = document.createElement("div");
+
+      const newButton = document.createElement("button");
+
+      document.body.appendChild(newDiv);
+      document.body.appendChild(newButton);
+
+      newDiv.innerHTML = "CONGRATULATIONS YOU EARNED Rs." + yourMoney;
+
+      newDiv.classList.add("newDivclass");
+      newButton.innerHTML = "Quit Gambling and Enjoy Life";
+
+      newButton.addEventListener("click", function () {
+        window.close();
+      });
+    }
+
+    function youlost() {
+      document.getElementById("slogan").style.color = "red";
+      document.getElementById("slogan").innerHTML =
+        "Unfortunately You Lost Rs. 50";
+    }
+
+    function youearned() {
+      document.getElementById("slogan").style.color = "green";
+      document.getElementById("slogan").innerHTML =
+        "Congratulations you earned Rs. 1000";
+    }
+  </script>
+</html>
