@@ -17,3 +17,6 @@ If the total value is not 12, you lose.
 HTML
 CSS
 JavaScript
+
+
+Author - Shivam Mishra 
